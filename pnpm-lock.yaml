@@ -6,11 +6,7 @@ settings:
 
 importers:
 
-  .:
-    dependencies:
-      pnpm:
-        specifier: ^9.15.0
-        version: 9.15.0
+  .: {}
 
   apps/backstage:
     dependencies:
@@ -1738,11 +1734,6 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
-
-  pnpm@9.15.0:
-    resolution: {integrity: sha512-duI3l2CkMo7EQVgVvNZije5yevN3mqpMkU45RBVsQpmSGon5djge4QfUHxLPpLZmgcqccY8GaPoIMe1MbYulbA==}
-    engines: {node: '>=18.12'}
-    hasBin: true
 
   postcss-selector-parser@6.1.2:
     resolution: {integrity: sha512-Q8qQfPiZ+THO/3ZrOrO0cJJKfpYCagtMUkXbnEfmgUjwXg6z/WBeOyS9APBBPCTSiDV+s4SwQGu8yFsiMRIudg==}
@@ -3868,8 +3859,6 @@ snapshots:
       typescript: 5.6.3
     transitivePeerDependencies:
       - '@vue/composition-api'
-
-  pnpm@9.15.0: {}
 
   postcss-selector-parser@6.1.2:
     dependencies:
