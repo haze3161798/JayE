@@ -1,0 +1,32 @@
+version: "3.8"
+# 定義 Docker Compose 版本
+
+services:
+  api-service:
+    # 定義 service 名稱
+    container_name: api-service
+    # 定義 container 名稱
+    build:
+      context: ./
+      # 上下文的位置
+      dockerfile: Dockerfile
+      # Dockerfile 檔案位置
+    ports:
+      - 3456:3000
+      # - 是陣列
+    volumes:
+      - ./:/app
+    # 持久化 可同步裡外
+
+    command: pnpm --filter ./apps/backend start:dev
+    # 可執行多項指令 要用字串串起來 可使用倒斜線(\)換行方便閱讀
+  # backstage:
+  #   container_name: backstage
+  #   build:
+  #     context: ./
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 3457:3000
+  #   volumes:
+  #     - ./:/app
+  #   command: pnpm --filter /backstage run dev
