@@ -1,8 +1,8 @@
 table
     product
         id (pk)
-        create time ()
-        update time
+        create time (DateTime)
+        update time (DateTime)
         name (varchar)
         img
         description
