@@ -45,3 +45,5 @@
 問題:
  1. docker
  2. @HttpCode()?
+ 3. 界接 mysql 要套件? 我看官往說要裝 prisma ? 還有 他的範例我看不懂他的意思
+ 
