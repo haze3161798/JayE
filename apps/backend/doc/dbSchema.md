@@ -9,10 +9,10 @@ table
 
 table
     order
-        id
-        create time
-        update time
-        order status
-        order number
-        product id
+        id (pk)
+        create time (DateTime)
+        update time (DateTime)
+        order status (varchar)
+        order number (number)
+        product id (number)
         
