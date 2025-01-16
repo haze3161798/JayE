@@ -17,9 +17,15 @@ export class Fix {
   @Column({ type: 'varchar', length: 255 })
   email: string;
 
-  @Column({ type: 'varchar', length: 100, nullable: true })
+  @Column({
+    type: 'varchar',
+    length: 100,
+    nullable: true,
+    comment: '其他聯絡方式',
+    name: 'other_contact',
+  })
   otherContact: string;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', comment: '詳細狀況' })
   detail: string;
 }
