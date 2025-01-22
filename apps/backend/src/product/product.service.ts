@@ -10,9 +10,17 @@ export class ProductService {
     // await queryRunner.connect();
     // await queryRunner.startTransaction();
   }
-  async test() {
-    return await this.dataSource.getRepository(Product).findOne({
-      where: { id: 2 },
-    });
+  async getProductBy(data) {
+    
+    if (JSON.stringify(data) === '{}') {
+      return await this.dataSource.getRepository(Product).find();
+    }
+    const returnData = await this.dataSource.getRepository(Product).findOne({ where: data })
+    if (returnData) {
+      return returnData
+    }
+    console.log(123);
+    
+    return await this.dataSource.getRepository(Product).find();
   }
 }
