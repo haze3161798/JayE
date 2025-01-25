@@ -20,6 +20,6 @@ export class Product {
   @Column({ type: 'text', comment: '商品描述', nullable: true })
   description: string;
 
-  @Column({ type: 'int', default: 9999, comment: '商品價格' })
+  @Column({ type: 'int', default: 9999, comment: '商品價格', nullable: true })
   price: number;
 }
