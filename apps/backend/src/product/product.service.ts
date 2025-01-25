@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 import { Product } from './product.entity';
-import { ProductInsertData } from './types';
+import { ProductInsertData, ProductUpdateData } from './types';
 @Injectable()
 export class ProductService {
   constructor(private dataSource: DataSource) {}
@@ -27,5 +27,9 @@ export class ProductService {
   async createProduct(data: ProductInsertData) {
     console.log(data);
     return await this.dataSource.getRepository(Product).save(data);
+  }
+
+  async updateProduct(ProductUpdateData: ProductUpdateData) {
+    return await this.dataSource.getRepository(Product).update({ id: ProductUpdateData.id }, ProductUpdateData);
   }
 }
