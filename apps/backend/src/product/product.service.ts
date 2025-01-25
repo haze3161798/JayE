@@ -26,11 +26,6 @@ export class ProductService {
 
   async createProduct(data: ProductInsertData) {
     console.log(data);
-    // const insertData = {
-    //   ...data,
-    //   createTime: new Date(),
-    //   updateTime: new Date(),
-    // }
     return await this.dataSource.getRepository(Product).save(data);
   }
 }
