@@ -32,4 +32,8 @@ export class ProductService {
   async updateProduct(ProductUpdateData: ProductUpdateData) {
     return await this.dataSource.getRepository(Product).update({ id: ProductUpdateData.id }, ProductUpdateData);
   }
+
+  async deleteProduct(id: number) {
+    return await this.dataSource.getRepository(Product).delete(id);
+  }
 }
