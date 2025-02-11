@@ -6,7 +6,7 @@ export class ProductController {
   constructor(private productService: ProductService) {}
 
   @Get()
-  async getProducts(@Query() query: Record<string, any>) {
+  async getProducts(@Query() query: Record<string, unknown>) {
     const res = await this.productService.getProductBy(query);
     return res;
   }
