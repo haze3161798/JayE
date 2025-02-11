@@ -1,14 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 export class Product {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'datetime' })
+  @CreateDateColumn({ type: 'datetime' })
   createTime: Date;
 
-  @Column({ type: 'datetime' })
+  @UpdateDateColumn({ type: 'datetime' })
   updateTime: Date;
 
   @Column({ type: 'varchar', length: 255 })
@@ -19,4 +19,7 @@ export class Product {
 
   @Column({ type: 'text', comment: '商品描述', nullable: true })
   description: string;
+
+  @Column({ type: 'int', default: 9999, comment: '商品價格', nullable: true })
+  price: number;
 }
