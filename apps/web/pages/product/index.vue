@@ -1,29 +1,25 @@
 <script lang="ts" setup>
 import type { ProductModel } from "~/types/product";
 
-const productsList = ref<ProductModel[]>([]);
+const runTimeConfig = useRuntimeConfig();
+const baseUrl = ref<string>(runTimeConfig.public.baseUrl);
+const url = computed(() => `${baseUrl.value}/api/product`);
+const { data: products, refresh } = useFetch<ProductModel[]>(url);
 
-const { data: products } = useFetch<ProductModel[]>(
-  "http://localhost:8080/api/product"
-);
-productsList.value = products.value ?? [];
-const get = async () => {
-  const res = await fetch("http://localhost:8080/api/product");
-  productsList.value = await res.json();
-};
 const create = async () => {
-  const res = await fetch("http://localhost:8080/api/product/create", {
+  const res = await fetch("/api/product/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name: crypto.randomUUID() }),
   });
-  get();
+  // get();
+  refresh();
 };
 
 const update = async (id: number) => {
-  const res = await fetch("http://localhost:8080/api/product/update", {
+  const res = await fetch("/api/product/update", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -33,27 +29,27 @@ const update = async (id: number) => {
       name: crypto.randomUUID(),
     }),
   });
-  get();
+  refresh();
 };
 const deleteProduct = async (id: number) => {
-  const res = await fetch("http://localhost:8080/api/product/delete", {
+  const res = await fetch("/api/product/delete", {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ id }),
   });
-  get();
+  refresh();
 };
 onMounted(() => {
-  console.log(JSON.stringify(products.value, null, 2));
+  baseUrl.value = "";
 });
 </script>
 
 <template>
   <button @click="create">create</button>
 
-  <div v-for="product in productsList" :key="product.id">
+  <div v-for="product in products" :key="product.id">
     {{ product.name }}
     <button @click="update(product.id)">update</button>
     <button @click="deleteProduct(product.id)">delete</button>
