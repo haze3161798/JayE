@@ -14,7 +14,7 @@ export class Product {
   @Column({ type: 'varchar', length: 255 })
   name: string;
 
-  @Column({ type: 'varchar', length: 36, nullable: true })
+  @Column({ type: 'varchar', length: 255, nullable: true })
   img: string;
 
   @Column({ type: 'text', comment: '商品描述', nullable: true })
