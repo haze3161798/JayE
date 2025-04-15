@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from './product/product.entity';
 import { ProductModule } from './product/product.module';
+import { AuthModule } from './auth/auth.module';
+import { Auth } from './auth/auth.entity';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -13,10 +15,11 @@ import { ProductModule } from './product/product.module';
       username: 'root',
       password: '0000',
       database: 'node_ts',
-      entities: [Product],
+      entities: [Product, Auth],
       synchronize: true,
     }),
     ProductModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
