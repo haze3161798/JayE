@@ -9,8 +9,12 @@ export default defineNuxtConfig({
           target: 'http://localhost:8080',
           changeOrigin: true,
         },
+        '/assets': {
+          target: 'http://localhost:8080',
+          changeOrigin: true,
       }
     }
+  }
   },
   runtimeConfig: {
     public: {
